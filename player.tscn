@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://kdlsubwpwyp4"]
+
+[ext_resource type="Texture2D" uid="uid://b0ytx8as1db8i" path="res://Assets/frogpng1.png" id="1_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://chqau14eycals" path="res://Assets/frogpng2.png" id="2_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://b7ysumax6ls3f" path="res://Assets/frogpng3.png" id="3_dw050"]
+[ext_resource type="Texture2D" uid="uid://dmqdp7sninueu" path="res://Assets/frogpng4.png" id="4_b26j0"]
+[ext_resource type="Texture2D" uid="uid://gh87g4we1u8o" path="res://Assets/frogpng5.png" id="5_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://de50ro45yqirx" path="res://Assets/frogpng6.png" id="6_nvl01"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxglt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2hs0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dw050")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b26j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n7ghd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nvl01")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="player" type="Node2D" unique_id=1574285840]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1334335823]
+sprite_frames = SubResource("SpriteFrames_hxglt")
+frame_progress = 0.48897988
