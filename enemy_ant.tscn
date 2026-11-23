@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cpq0sh5uw55q7"]
+
+[ext_resource type="Script" uid="uid://ob1b2jbatp14" path="res://ant.gd" id="1_be7jx"]
+[ext_resource type="Texture2D" uid="uid://bakm13vxpyweq" path="res://Assets/ant enemy1.png" id="1_d8veo"]
+[ext_resource type="Texture2D" uid="uid://h0uqw1ulrgg6" path="res://Assets/ant enemy2.png" id="2_be7jx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxglt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d8veo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_be7jx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuycy"]
+size = Vector2(18.947365, 14.923077)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hxglt"]
+radius = 89.29709
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xuycy"]
+radius = 9.734136
+
+[node name="enemy ant" type="Node2D" unique_id=1868449695]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=2071574074]
+position = Vector2(55, 41.5)
+scale = Vector2(2.375, 2.03125)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_be7jx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1747763878]
+sprite_frames = SubResource("SpriteFrames_hxglt")
+frame_progress = 0.14608349
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=980597993]
+position = Vector2(0, 2.138462)
+shape = SubResource("RectangleShape2D_xuycy")
+
+[node name="DetectionArea" type="Area2D" parent="CharacterBody2D" unique_id=252192176]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/DetectionArea" unique_id=973712781]
+position = Vector2(0, 1.2307693)
+shape = SubResource("CircleShape2D_hxglt")
+
+[node name="AttackArea" type="Area2D" parent="CharacterBody2D" unique_id=1037372125]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackArea" unique_id=941135518]
+position = Vector2(-0.84210527, 0.24615385)
+shape = SubResource("CircleShape2D_xuycy")
