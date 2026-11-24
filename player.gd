@@ -6,8 +6,7 @@ extends CharacterBody2D
 var attacking = false
 
 func _ready():
-	anim.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
-	anim.play("movement")
+	pass
 
 func _physics_process(delta):
 	if attacking:
