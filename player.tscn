@@ -72,23 +72,21 @@ animations = [{
 }],
 "loop": 1,
 "name": &"movement",
-"speed": 5.0
+"speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxglt"]
-size = Vector2(58.5, 46.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dogw"]
 
-[node name="Player" type="CharacterBody2D" unique_id=785818448 groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=785818448]
 script = ExtResource("1_pbfsw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1336522113]
-position = Vector2(168, 43)
+texture_filter = 1
 scale = Vector2(2.46875, 2.46875)
 sprite_frames = SubResource("SpriteFrames_acn8e")
-animation = &"attack"
-frame = 8
-frame_progress = 1.0
+animation = &"movement"
+frame = 1
+frame_progress = 0.39722088
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=672982334]
-position = Vector2(166, 40)
-shape = SubResource("RectangleShape2D_hxglt")
+shape = SubResource("RectangleShape2D_3dogw")
