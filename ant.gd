@@ -41,7 +41,7 @@ func _patrol():
 		direction *= -1
 
 func _chase():
-	var to_target = target.global_position - global_position
+	var to_target = target.global_position - position
 	if attack_area.overlaps_body(target):
 		velocity = Vector2.ZERO
 		_attack()

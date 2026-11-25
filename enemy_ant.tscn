@@ -27,33 +27,31 @@ radius = 89.29709
 [sub_resource type="CircleShape2D" id="CircleShape2D_xuycy"]
 radius = 9.734136
 
-[node name="enemy ant" type="Node2D" unique_id=1868449695]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=2071574074]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1078666030]
 position = Vector2(55, 41.5)
 scale = Vector2(2.375, 2.03125)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_be7jx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1747763878]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1121237092]
 sprite_frames = SubResource("SpriteFrames_hxglt")
 frame_progress = 0.14608349
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=980597993]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=297626906]
 position = Vector2(0, 2.138462)
 shape = SubResource("RectangleShape2D_xuycy")
 
-[node name="DetectionArea" type="Area2D" parent="CharacterBody2D" unique_id=252192176]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1948434215]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/DetectionArea" unique_id=973712781]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=59748729]
 position = Vector2(0, 1.2307693)
 shape = SubResource("CircleShape2D_hxglt")
 
-[node name="AttackArea" type="Area2D" parent="CharacterBody2D" unique_id=1037372125]
+[node name="AttackArea" type="Area2D" parent="." unique_id=1648647609]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackArea" unique_id=941135518]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1072651220]
 position = Vector2(-0.84210527, 0.24615385)
 shape = SubResource("CircleShape2D_xuycy")

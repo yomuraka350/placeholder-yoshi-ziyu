@@ -1,42 +1,37 @@
 extends CharacterBody2D
 
-@export var speed = 150.0
-@onready var anim = $AnimatedSprite2D
+@export var speed := 200.0
+@export var acceleration := 8.0
+@export var slam_velocity := -600.0
 
 var attacking = false
 
 func _ready():
-	anim.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
-	anim.play("movement")
+	pass
 
 func _physics_process(delta):
-	if attacking:
-		velocity = Vector2.ZERO
-		move_and_slide()
-		return
+	get_input()
+	apply_gravity(delta)
 
-	var dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = dir * speed
-	move_and_slide()
-
-	# 左右翻转
-	if dir.x != 0:
-		anim.flip_h = dir.x < 0
-
-	# 移动时播放 movement，不动时停在第一帧
-	if dir != Vector2.ZERO:
-		if anim.animation != "movement" or not anim.is_playing():
-			anim.play("movement")
+func get_input():
+	var direction := Input.get_axis("move_left", "move_right")
+	if direction:
+		velocity.x += direction * speed / acceleration
 	else:
-		anim.stop()
-		anim.frame = 0
-
-func _input(event):
-	if event.is_action_pressed("attack") and not attacking:
-		attacking = true
-		anim.play("attack")
-
-func _on_animated_sprite_2d_animation_finished():
-	if anim.animation == "attack":
-		attacking = false
-		anim.play("movement")
+		if velocity.x < 0:
+			velocity.x += speed / acceleration
+			velocity.x = clamp(velocity.x, -speed, 0)
+		elif velocity.x > 0:
+			velocity.x -= speed / acceleration
+			velocity.x = clamp(velocity.x, 0, speed)
+	
+	velocity.x = clamp(velocity.x, -speed, speed)
+	
+	if Input.is_action_just_pressed("attack") && is_on_floor():
+		velocity.y += slam_velocity
+	
+	move_and_slide()
+	
+func apply_gravity(delta : float):
+	if not is_on_floor():
+		velocity += get_gravity() * delta
