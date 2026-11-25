@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed := 200.0
 @export var acceleration := 8.0
-@export var jump_velocity := -600.0
+@export var slam_velocity := -600.0
 
 var attacking = false
 
@@ -26,6 +26,9 @@ func get_input():
 			velocity.x = clamp(velocity.x, 0, speed)
 	
 	velocity.x = clamp(velocity.x, -speed, speed)
+	
+	if Input.is_action_just_pressed("attack") && is_on_floor():
+		velocity.y += slam_velocity
 	
 	move_and_slide()
 	
